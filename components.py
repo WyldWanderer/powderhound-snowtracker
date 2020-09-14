@@ -1,5 +1,10 @@
 from selenium import webdriver
-browser = webdriver.Firefox()
+
+
+def get_url ():
+    input_name = input("Where are you interested in skiing?: ")
+    location_name = input_name.lower().replace(" ", "")
+    url = webdriver.Firefox().get('https://opensnow.com/location/' + str(location_name))
 
 def get_temp ():
     elems = browser.find_elements_by_class_name('high')
@@ -28,3 +33,7 @@ def get_snow ():
         snowForecast.remove('')
 
     print(snowForecast)
+
+
+get_url()
+get_temp()

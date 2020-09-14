@@ -1,7 +1,8 @@
 from selenium import webdriver
 import components
 
-webdriver.Firefox().get('https://opensnow.com/location/copper')
+
+webdriver.Firefox().get('https://opensnow.com/location/' + )
 components.get_temp()
 components.get_snow()
 
