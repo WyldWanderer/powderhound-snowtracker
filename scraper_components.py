@@ -1,3 +1,4 @@
+# Contains the functions for web scraping upcoming temperature and snow forecast
 from selenium import webdriver
 
 # Set starting global variables
