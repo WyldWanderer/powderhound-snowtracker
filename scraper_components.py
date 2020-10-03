@@ -4,6 +4,8 @@ from selenium import webdriver
 # Set starting global variables
 url = 'EMPTY URL'
 browser = ''
+hiTemp = []
+snowForecast = []
 
 # Prompts for user to enter which resort the client wants information on, this function is for later if deploying to a more interactive platform
 # Currently, the url variable is being set in main.py 
@@ -17,13 +19,12 @@ def get_url ():
 # as the find elements by class name method is page specific
 def get_temp ():
     global browser
+    global hiTemp
     if browser == '':
         browser = webdriver.Firefox()
         browser.get(url)
 
     elems = browser.find_elements_by_class_name('high')
-
-    hiTemp = []
 
     for element in elems:
         try: 
@@ -32,19 +33,16 @@ def get_temp ():
         except:
             print("Something went wrong getting temperatures")
 
-    print(hiTemp)
-
 # Get's available snow forecast data from provided url, url MUST BE https://opensnow.com/location/ + location name in order to work 
 # as the find elements by class name method is page specific
 def get_snow ():
     global browser
+    global snowForecast
     if browser == '':
         browser = webdriver.Firefox()
         browser.get(url)
 
     snow = browser.find_elements_by_class_name('us')
-    
-    snowForecast = []
 
     for forecast in snow:
         try:
@@ -55,6 +53,4 @@ def get_snow ():
 
     while('' in snowForecast):
         snowForecast.remove('')
-
-    print(snowForecast)
 
